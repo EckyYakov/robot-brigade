@@ -69,18 +69,14 @@ events.on("exec", (e, p) => {
     console.log("==> Running Push Job")
     })
 
-  }
+})
 
 
 events.on("error", (e) => {
     console.log("Error event " + util.inspect(e, false, null) )
-     console.log("==> Event " + e.type + " caused by " + e.provider + " cause class" + e.cause + e.cause.reason)
-    })
+    console.log("==> Event " + e.type + " caused by " + e.provider + " cause class" + e.cause + e.cause.reason)
+})
 
 events.on("after", (e) => {  
     console.log("After event fired " + util.inspect(e, false, null) )
-  })
-
-
-
-)
+})
