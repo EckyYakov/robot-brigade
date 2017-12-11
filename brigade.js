@@ -23,6 +23,7 @@ events.on("exec", (e, p) => {
 
   // create job with name and container image to use
   var helm_job = new Job("helm-job", CONTAINER) // runs helm_job 
+  helm_job.storage.enabled = false
   
   // allow docker socket
   helm_job.docker.enabled = true
@@ -38,19 +39,7 @@ events.on("exec", (e, p) => {
 
   //set up ENV
   // helm_job.env = helm_job.env = {
-  //   "KOLLA_BASE": "ubuntu",
-  //   "KOLLA_TYPE": "source",
-  //   "KOLLA_TAG": "4.0.2-kb",
-  //   "KOLLA_PROJECT": "keystone",
-  //   "KOLLA_NAMESPACE": "charter-os",
-  //   "KOLLA_VERSION": KOLLA_VERSION,
-  //   "DOCKER_USER": p.secrets.docker_user,
-  //   "DOCKER_PASS": p.secrets.docker_pass,
-  //   "DOCKER_REGISTRY": "quay.io",
-  //   "REPO_BASE": "https://github.com/openstack",
-  //   "PROJECT_REFERENCE": "stable/ocata",
-  //   "PROJECT_GIT_COMMIT": "e1a94f39edb6cf777c71c7a511476b1e60436ab9",
-  //   "RELEASE": "stable-ocata"
+  //   "HELM_HOST": ""
   // }
 
 
