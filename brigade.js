@@ -1,4 +1,4 @@
-const HELM_VERSION = "2.5.1"
+const HELM_VERSION = "v2.5.1"
   /* 
     v2.7.2, latest
     v2.6.1,
@@ -13,6 +13,7 @@ const HELM_VERSION = "2.5.1"
 const CONTAINER = "lachlanevenson/k8s-helm:" + HELM_VERSION
 
 const { events, Job } = require("brigadier")
+const util = require('util')
 
 events.on("exec", (e, p) => {
 
@@ -66,6 +67,20 @@ events.on("exec", (e, p) => {
     console.log(resultStart.toString())
     console.log("==> Start Job Done")
     console.log("==> Running Push Job")
+    })
+
+  }
+
+
+events.on("error", (e) => {
+    console.log("Error event " + util.inspect(e, false, null) )
+     console.log("==> Event " + e.type + " caused by " + e.provider + " cause class" + e.cause + e.cause.reason)
+    })
+
+events.on("after", (e) => {  
+    console.log("After event fired " + util.inspect(e, false, null) )
   })
 
-})
+
+
+)
