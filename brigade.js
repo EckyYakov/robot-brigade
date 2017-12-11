@@ -34,7 +34,8 @@ events.on("exec", (e, p) => {
 
   helm_job.tasks.push("ls /src") // add first task
   helm_job.tasks.push("helm ls") 
-  helm_job.tasks.push("helm repo list") 
+  //helm_job.tasks.push("helm repo list") // doesn't work, wrong user scope and host filesystem
+  helm_job.tasks.push("helm delete --purge glance") // works
 
 
   //set up ENV
