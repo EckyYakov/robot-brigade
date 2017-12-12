@@ -1,13 +1,12 @@
 # HelmBrigade
 
 
-HelmBrigade is a [Brigade](https://github.com/Azure/brigade) Project that utilizes  
-[Helm](https://github.com/kubernetes/helm) [containers](https://hub.docker.com/r/lachlanevenson/k8s-helm/). 
+HelmBrigade is a [Brigade](https://github.com/Azure/brigade) Project that utilizes [Helm](https://github.com/kubernetes/helm) [containers](https://hub.docker.com/r/lachlanevenson/k8s-helm/). 
 
 ## Prerequisites
 
 1. Have a running [Kubernetes](https://kubernetes.io/docs/setup/) environment
-2. Setup [Helm](https://github.com/kubernetes/helm)
+2. Setup [Helm](https://github.com/kubernetes/helm) - this assumes Helm on your Host regardless of the Helm container used later on. 
 
 ## Install
 
@@ -20,17 +19,6 @@ Install Brigade into your Kubernetes cluster is to install it using Helm.
 ```bash
 $ helm repo add brigade https://azure.github.io/brigade
 $ helm install -n brigade brigade/brigade
-```
-
-**optional** Install Brigade with Ingress
-```bash
-export FQDN=os.spoc.linux
-helm install -n brigade brigade/brigade \
-    --set api.service.type=ClusterIP \
-    --set ingress.enabled=true \
-    --set ingress.hosts={brigade.$FQDN} \
-    --dry-run --debug
-
 ```
 
 To manually run Brigade Projects the **brig** binary is required. Follow the
