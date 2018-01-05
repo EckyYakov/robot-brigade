@@ -10,6 +10,9 @@ const HELM_VERSION = "v2.5.1"
     v2.0.2
   */
 
+const IMAGE_VERSION = "0.1.0"
+const IMAGE = "quay.io/larryrensing/robot:" + IMAGE_VERSION
+
 const CONTAINER = "lachlanevenson/k8s-helm:" + HELM_VERSION
 
 const { events, Job } = require("brigadier")
@@ -22,7 +25,7 @@ events.on("exec", (e, p) => {
   console.log("==> Event " + e.type + " caused by " + e.provider)
 
   // create job with name and container image to use
-  var helm_job = new Job("helm-job", CONTAINER) // runs helm_job 
+  var helm_job = new Job("robot-job", IMAGE) // runs helm_job 
   helm_job.storage.enabled = false
   
   // allow docker socket
@@ -31,12 +34,16 @@ events.on("exec", (e, p) => {
   //set up tasks
   helm_job.tasks = [] //init empty tasks
  
-
-  helm_job.tasks.push("ls /src") // add first task
-  helm_job.tasks.push("helm ls") 
-  //helm_job.tasks.push("helm repo list") // doesn't work, wrong user scope and host filesystem
-  helm_job.tasks.push("helm delete --purge glance") // works
-
+  //set environment vars
+  helm_job.env = {
+    "HOST_UID": p.users.uid,
+    "HOST_GID": p.users.gid
+  }
+  
+  //Tasks
+  helm_job.tasks.push("echo Running robot test suite")  
+  
+  helm_job.tasks.push("${@:-tests}")
 
   //set up ENV
   // helm_job.env = helm_job.env = {
