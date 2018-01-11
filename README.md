@@ -1,7 +1,7 @@
-# HelmBrigade
+# Robot-Brigade
 
 
-HelmBrigade is a [Brigade](https://github.com/Azure/brigade) Project that utilizes [Helm](https://github.com/kubernetes/helm) [containers](https://hub.docker.com/r/lachlanevenson/k8s-helm/). 
+Robot-Brigade is a [Brigade](https://github.com/Azure/brigade) Project that utilizes [RFDocker](https://github.com/asyrjasalo/rfdocker) [containers](https://hub.docker.com/r/lachlanevenson/k8s-helm/). 
 
 ## Prerequisites
 
@@ -31,12 +31,12 @@ Test **brig** with `brig version`
 
 ### Install HelmBrigade
 
-Clone HelmBrigade and change directory
+Clone Robot-Brigade and change directory
 ```bash
-$ git clone https://github.com/lukepatrick/HelmBrigade
-$ cd HelmBrigade
+$ git clone https://github.com/EckyYakov/robot-brigade
+$ cd robot-brigade
 ```
-Helm install HelmBrigade
+Helm install robot-brigade
 > note the name and namespace can be customized
 ```bash
 $ helm install --name helmbrigade brigade/brigade-project -f helmbrigade.yaml
@@ -46,11 +46,17 @@ $ helm install --name helmbrigade brigade/brigade-project -f helmbrigade.yaml
 ## Usage
 
 Manually run the project. The project name is the same as the project value in
-the *helmbrigade.yaml*
+the *robot-values.yaml*
 ```bash
-$ brig run lukepatrick/HelmBrigade
+$ brig run EckyYakov/robot-brigade
 ```
 
+## Notes
+
+If you make changes to *robot-values.yaml* you'll need to redeploy the project.
+```bash
+$ helm delete robot-brigade --purge
+```
 
 ## Contribute
 
