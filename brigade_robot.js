@@ -29,7 +29,7 @@ events.on("exec", (e, p) => {
   console.log("Project: " + str + "...")
 
   // create job with name and container image to use
-  /*var helm_job = new Job("robot-job", IMAGE) // runs helm_job 
+  var helm_job = new Job("robot-job", IMAGE) // runs helm_job 
   helm_job.storage.enabled = false
   
   // allow docker socket
@@ -39,20 +39,23 @@ events.on("exec", (e, p) => {
   helm_job.tasks = [] //init empty tasks
  
   //set environment vars
-  helm_job.env = {
+  /*helm_job.env = {
     "HOST_UID": p.secrets.uid,
     "HOST_GID": p.secrets.gid
-  }
+  }*/
   
   //Tasks
-  helm_job.tasks.push("echo Running robot test suite")  
-  
+  helm_job.tasks.push("ls /src")
+  helm_job.tasks.push("robot /src/tests")
+  //helm_job.tasks.push("source /src/rfdocker")
+  /*helm_job.tasks.push("echo Running robot test suite")  
+ 
   helm_job.tasks.push("${@:-tests}")
-
+  */
   //set up ENV
-  helm_job.env = helm_job.env = {
-    "HELM_HOST": ""
-  }
+  //helm_job.env = helm_job.env = {
+  //  "HELM_HOST": ""
+  //}
 
 
   console.log("==> Set up tasks, env, Job ")
@@ -69,7 +72,6 @@ events.on("exec", (e, p) => {
     console.log("==> Start Job Done")
     console.log("==> Running Push Job")
     })
-  */
 })
 
 
