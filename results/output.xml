@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 3.0.2 (Python 3.6.3 on linux)" generated="20180111 19:50:38.487">
+<suite id="s1" name="Tests" source="/home/robot/tests">
+<suite id="s1-s1" name="Sanity Checks" source="/home/robot/tests/sanity_checks.robot">
+<test id="s1-s1-t1" name="Robot Framework is ran inside the container">
+<kw name="Log To Console" library="BuiltIn">
+<doc>Logs the given message to the console.</doc>
+<arguments>
+<arg>\n\nHello from a Docker container, using keyword Log To Console!\n</arg>
+</arguments>
+<status status="PASS" starttime="20180111 19:50:38.523" endtime="20180111 19:50:38.524"></status>
+</kw>
+<status status="PASS" starttime="20180111 19:50:38.522" endtime="20180111 19:50:38.524" critical="yes"></status>
+</test>
+<status status="PASS" starttime="20180111 19:50:38.519" endtime="20180111 19:50:38.525"></status>
+</suite>
+<status status="PASS" starttime="20180111 19:50:38.488" endtime="20180111 19:50:38.527"></status>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0">Critical Tests</stat>
+<stat pass="1" fail="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="1" fail="0" id="s1" name="Tests">Tests</stat>
+<stat pass="1" fail="0" id="s1-s1" name="Sanity Checks">Tests.Sanity Checks</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

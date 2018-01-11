@@ -10,8 +10,8 @@ const HELM_VERSION = "v2.5.1"
     v2.0.2
   */
 
-const IMAGE_VERSION = "0.1.0"
-const IMAGE = "quay.io/larryrensing/robot:" + IMAGE_VERSION
+const IMAGE_VERSION = "3.0.2"
+const IMAGE = "quay.io/charter-ctec/rfdocker:" + IMAGE_VERSION
 
 const CONTAINER = "lachlanevenson/k8s-helm:" + HELM_VERSION
 
@@ -23,9 +23,13 @@ events.on("exec", (e, p) => {
   // env info
   console.log("==> Project " + p.name + " clones the repo at " + p.repo.cloneURL)
   console.log("==> Event " + e.type + " caused by " + e.provider)
+  
+  // Outputs the content of the Project object
+  var str = JSON.stringify(p)
+  console.log("Project: " + str + "...")
 
   // create job with name and container image to use
-  var helm_job = new Job("robot-job", IMAGE) // runs helm_job 
+  /*var helm_job = new Job("robot-job", IMAGE) // runs helm_job 
   helm_job.storage.enabled = false
   
   // allow docker socket
@@ -36,8 +40,8 @@ events.on("exec", (e, p) => {
  
   //set environment vars
   helm_job.env = {
-    "HOST_UID": p.users.uid,
-    "HOST_GID": p.users.gid
+    "HOST_UID": p.secrets.uid,
+    "HOST_GID": p.secrets.gid
   }
   
   //Tasks
@@ -46,14 +50,14 @@ events.on("exec", (e, p) => {
   helm_job.tasks.push("${@:-tests}")
 
   //set up ENV
-  // helm_job.env = helm_job.env = {
-  //   "HELM_HOST": ""
-  // }
+  helm_job.env = helm_job.env = {
+    "HELM_HOST": ""
+  }
 
 
   console.log("==> Set up tasks, env, Job ")
   //debug only
-  //console.log(helm_job)
+  console.log(helm_job)
 
   console.log("==> Running helm_job Job")
 
@@ -65,7 +69,7 @@ events.on("exec", (e, p) => {
     console.log("==> Start Job Done")
     console.log("==> Running Push Job")
     })
-
+  */
 })
 
 
