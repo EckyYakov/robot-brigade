@@ -6,7 +6,8 @@
 # Jetbrains
 .idea/
 
-
+# Ignore test results
+results/
 
 # CMake
 cmake-build-debug/

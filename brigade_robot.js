@@ -1,19 +1,5 @@
-const HELM_VERSION = "v2.5.1"
-  /* 
-    v2.7.2, latest
-    v2.6.1,
-    v2.5.1,
-    v2.4.2,
-    v2.3.1, 
-    v2.2.3,
-    v2.1.3, 
-    v2.0.2
-  */
-
 const IMAGE_VERSION = "3.0.2"
 const IMAGE = "quay.io/charter-ctec/rfdocker:" + IMAGE_VERSION
-
-const CONTAINER = "lachlanevenson/k8s-helm:" + HELM_VERSION
 
 const { events, Job } = require("brigadier")
 const util = require('util')
@@ -23,10 +9,6 @@ events.on("exec", (e, p) => {
   // env info
   console.log("==> Project " + p.name + " clones the repo at " + p.repo.cloneURL)
   console.log("==> Event " + e.type + " caused by " + e.provider)
-  
-  // Outputs the content of the Project object
-  var str = JSON.stringify(p)
-  console.log("Project: " + str + "...")
 
   // create job with name and container image to use
   var helm_job = new Job("robot-job", IMAGE) // runs helm_job 
@@ -37,26 +19,11 @@ events.on("exec", (e, p) => {
 
   //set up tasks
   helm_job.tasks = [] //init empty tasks
- 
-  //set environment vars
-  /*helm_job.env = {
-    "HOST_UID": p.secrets.uid,
-    "HOST_GID": p.secrets.gid
-  }*/
   
   //Tasks
+  helm_job.tasks.push("echo Running robot test suite...")  
   helm_job.tasks.push("ls /src")
   helm_job.tasks.push("robot /src/tests")
-  //helm_job.tasks.push("source /src/rfdocker")
-  /*helm_job.tasks.push("echo Running robot test suite")  
- 
-  helm_job.tasks.push("${@:-tests}")
-  */
-  //set up ENV
-  //helm_job.env = helm_job.env = {
-  //  "HELM_HOST": ""
-  //}
-
 
   console.log("==> Set up tasks, env, Job ")
   //debug only
