@@ -48,8 +48,9 @@ $ helm install --name helmbrigade brigade/brigade-project -f helmbrigade.yaml
 Manually run the project. The project name is the same as the project value in
 the *robot-values.yaml*
 ```bash
-$ brig run EckyYakov/robot-brigade
+$ brig run -f brigade_robot.js EckyYakov/robot-brigade
 ```
+The project will automatically run all the tests in the test/ directory.
 
 ## Notes
 

@@ -21,8 +21,8 @@ events.on("exec", (e, p) => {
   helm_job.tasks = [] //init empty tasks
   
   //Tasks
+  //Run the tests in the test directory
   helm_job.tasks.push("echo Running robot test suite...")  
-  helm_job.tasks.push("ls /src")
   helm_job.tasks.push("robot /src/tests")
 
   console.log("==> Set up tasks, env, Job ")
