@@ -39,7 +39,7 @@ $ cd robot-brigade
 Helm install robot-brigade
 > note the name and namespace can be customized
 ```bash
-$ helm install --name helmbrigade brigade/brigade-project -f helmbrigade.yaml
+$ helm install --name robot-brigade brigade/brigade-project -f robot-values.yaml
 ```
 
 

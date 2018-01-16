@@ -1,17 +1,15 @@
 # Name of the project, in the form "user/project"
-project: "EckyYakov/robot"
+project: "EckyYakov/robot-brigade"
 
 # Domain/Org/Project
-repository: "github.com/EckyYakov/robot"
+repository: "github.com/EckyYakov/robot-brigade"
 
 # The definitive clone URL. This can be any Git-supported URL format.
 # You may set this to "" for no clone URL.
-cloneURL: "https://github.com/EckyYakov/robot.git"
+cloneURL: "https://github.com/EckyYakov/robot-brigade.git"
 
 # Used by GitHub and other services to compute hook HMACs.
 sharedSecret: "IBrakeForSeaBeasts"
-
-test: "This is a test"
 
 # OPTIONAL: Use this to have Brigade update your project about the build.
 # You probably want this if you want pull requests or commits to show
@@ -47,9 +45,7 @@ github: {}
 #     myVar: "super awesome"
 #
 # Inside of the job's pod, $MY_ENV_VAR = "super awesome"
-secrets: 
-  HOST_UID: TEST
-  HOST_GID: TEST
+secrets: {}
 
 # OPTIONAL: Namespace into which builds will be deployed.
 # Using this has implications for what you can access, so don't set this unless
