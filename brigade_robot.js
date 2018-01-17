@@ -1,4 +1,4 @@
-const IMAGE_VERSION = "3.0.2"
+const IMAGE_VERSION = "3.0.2-python2"
 const IMAGE = "quay.io/charter-ctec/rfdocker:" + IMAGE_VERSION
 
 const { events, Job } = require("brigadier")

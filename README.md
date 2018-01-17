@@ -65,6 +65,12 @@ In 0.8.0 the vacuum pod fails trying to find the kubeconfig, they are working on
 helm upgrade brigade brigade/brigade --set vacuum.enabled=false
 ```
 
+If rbac is enabled in the cluster you may get an javascript Object error even if the logs of the worker pod are okay. To temporarilyy work around this add a role for the brigade work
+
+```bash
+kubectl create clusterrolebinding brigade --clusterrole cluster-admin --serviceaccount="default:brigade-worker"
+```
+
 ## Contribute
 
 PRs accepted.
