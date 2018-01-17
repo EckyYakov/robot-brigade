@@ -59,6 +59,12 @@ If you make changes to *robot-values.yaml* you'll need to redeploy the project.
 $ helm delete robot-brigade --purge
 ```
 
+In 0.8.0 the vacuum pod fails trying to find the kubeconfig, they are working on the fix but the temporary workaround is to run this command
+
+```bash
+helm upgrade brigade brigade/brigade --set vacuum.enabled=false
+```
+
 ## Contribute
 
 PRs accepted.

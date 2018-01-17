@@ -34,10 +34,10 @@ events.on("exec", (e, p) => {
   // run Start Job, get Promise and print results
   helm_job.run().then( resultStart => {
     //debug only
-    console.log("==> Start Job Results")
+    /*console.log("==> Start Job Results")
     console.log(resultStart.toString())
     console.log("==> Start Job Done")
-    console.log("==> Running Push Job")
+    console.log("==> Running Push Job")*/
     })
 })
 
