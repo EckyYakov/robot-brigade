@@ -54,6 +54,8 @@ The project will automatically run all the tests in the test/ directory.
 
 ## Notes
 
+Details on the Docker image used can be found [here](https://github.com/charter-ctec/dockerfiles)
+
 If you make changes to *robot-values.yaml* you'll need to redeploy the project.
 ```bash
 $ helm delete robot-brigade --purge
