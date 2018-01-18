@@ -1,7 +1,7 @@
 # https://github.com/asyrjasalo/rfdocker
 # https://hub.docker.com/r/robotframework/rfdocker
 
-FROM quay.io/charter-ctec/rfdocker:3.0.2 
+FROM quay.io/charter-ctec/robot-docker:1.0.0 
 
 ### Uncomment following two lines if having external test libraries:
 # COPY requirements.txt .

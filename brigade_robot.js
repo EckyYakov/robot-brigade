@@ -22,7 +22,8 @@ events.on("exec", (e, p) => {
   
   //Tasks
   //Run the tests in the test directory
-  helm_job.tasks.push("echo Running robot test suite...")  
+  helm_job.tasks.push("echo Running robot test suite...")
+  helm_job.tasks.push("ls /src/tests")
   helm_job.tasks.push("robot /src/tests")
 
   console.log("==> Set up tasks, env, Job ")
@@ -34,10 +35,10 @@ events.on("exec", (e, p) => {
   // run Start Job, get Promise and print results
   helm_job.run().then( resultStart => {
     //debug only
-    /*console.log("==> Start Job Results")
+    console.log("==> Start Job Results")
     console.log(resultStart.toString())
     console.log("==> Start Job Done")
-    console.log("==> Running Push Job")*/
+    console.log("==> Running Push Job")
     })
 })
 
